@@ -1520,6 +1520,8 @@ public:
 	/// @param _inLibrary if true, uses DelegateCall as location.
 	FunctionTypePointer asExternallyCallableFunction(bool _inLibrary) const;
 
+	bool isViewable() const { return m_isViewable; }
+
 protected:
 	std::vector<std::tuple<std::string, Type const*>> makeStackItems() const override;
 private:
@@ -1533,6 +1535,7 @@ private:
 	StateMutability m_stateMutability = StateMutability::NonPayable;
 	Declaration const* m_declaration = nullptr;
 	Options const m_options;
+	bool m_isViewable = false;
 };
 
 /**

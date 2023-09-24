@@ -191,6 +191,7 @@ namespace solidity::langutil
 	K(Unicode, "unicode", 0)                                           \
 	K(Using, "using", 0)                                               \
 	K(View, "view", 0)                                                 \
+	K(Viewable, "viewable", 0)                                         \
 	K(Virtual, "virtual", 0)                                           \
 	K(While, "while", 0)                                               \
 	\

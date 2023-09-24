@@ -519,6 +519,9 @@ StateMutability Parser::parseStateMutability()
 		case Token::Pure:
 			stateMutability = StateMutability::Pure;
 			break;
+		case Token::Viewable:
+			stateMutability = StateMutability::NonPayable;
+			break;
 		default:
 			solAssert(false, "Invalid state mutability specifier.");
 	}
@@ -586,6 +589,10 @@ Parser::FunctionHeaderParserResult Parser::parseFunctionHeader(bool _isStateVari
 				parserError(6879_error, "Virtual already specified.");
 
 			result.isVirtual = true;
+			advance();
+		}
+		else if (!_isStateVariable && token == Token::Viewable) {
+			result.isViewable = true;
 			advance();
 		}
 		else
@@ -672,7 +679,8 @@ ASTPointer<ASTNode> Parser::parseFunctionDefinition(bool _freeFunction)
 		header.parameters,
 		header.modifiers,
 		header.returnParameters,
-		block
+		block,
+		header.isViewable
 	);
 }
 

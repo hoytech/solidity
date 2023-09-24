@@ -74,6 +74,7 @@ private:
 		Visibility visibility = Visibility::Default;
 		StateMutability stateMutability = StateMutability::NonPayable;
 		std::vector<ASTPointer<ModifierInvocation>> modifiers;
+		bool isViewable = false;
 	};
 
 	/// Struct to share parsed function call arguments.

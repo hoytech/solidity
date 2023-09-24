@@ -58,7 +58,7 @@ Json::Value ABI::generate(ContractDefinition const& _contractDef)
 		Json::Value method{Json::objectValue};
 		method["type"] = "function";
 		method["name"] = it.second->declaration().name();
-		method["stateMutability"] = stateMutabilityToString(externalFunctionType->stateMutability());
+		method["stateMutability"] = it.second->isViewable() ? "view" : stateMutabilityToString(externalFunctionType->stateMutability());
 		method["inputs"] = formatTypeList(
 			externalFunctionType->parameterNames(),
 			externalFunctionType->parameterTypes(),

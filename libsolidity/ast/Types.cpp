@@ -2818,6 +2818,8 @@ FunctionType::FunctionType(FunctionDefinition const& _function, Kind _kind):
 		m_returnParameterNames.size() == m_returnParameterTypes.size(),
 		"Return parameter names list must match return parameter types list!"
 	);
+
+	m_isViewable = _function.isViewable();
 }
 
 FunctionType::FunctionType(VariableDeclaration const& _varDecl):
